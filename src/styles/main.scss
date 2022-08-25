@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:400, 700');
+// @import '~antd/dist/antd.css';
+@import 'antd/dist/antd.css';
+@import './reset';
+
+// common component
+@import './InputField.scss';
+@import './PasswordField.scss';
+@import './TextAreaField.scss';
+// pages
+@import './Login';
+@import './SignUP';
+@import './ToDoList';
+@import './ToDoCreate';

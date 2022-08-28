@@ -6,6 +6,7 @@ import { toDoYup } from '../../utils/schema';
 import InputField from '../../components/InputField';
 import TextAreaField from '../../components/TextAreaField';
 import { putUpdateToDo } from '../../hooks/useMutationtoDo';
+import ToDoDelete from './ToDoDelete';
 
 function ToDoUpdateForm(props) {
   const { data } = props;
@@ -28,8 +29,8 @@ function ToDoUpdateForm(props) {
   const { mutate: updateToDo, isError, error, isLoading } = putUpdateToDo(id);
 
   const onSubmit = updateData => {
-    updateToDo(updateData);
-    console.log(updateData);
+    const postData = { ...updateData, id };
+    updateToDo(postData);
   };
 
   useEffect(() => {
@@ -41,13 +42,16 @@ function ToDoUpdateForm(props) {
     <section className="ToDoUpdateForm">
       <div className="form">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <section className="bottom-24">
+          <section>
             <InputField control={control} errors={errors} name="title" label="Title" />
             <TextAreaField control={control} errors={errors} name="content" label="Content" />
           </section>
-          <Button loading={isLoading} type="submit" onClick={handleSubmit(onSubmit)}>
-            Update
-          </Button>
+          <div className="button">
+            <Button loading={isLoading} type="submit" onClick={handleSubmit(onSubmit)}>
+              Update
+            </Button>
+            <ToDoDelete id={id} />
+          </div>
         </form>
       </div>
     </section>

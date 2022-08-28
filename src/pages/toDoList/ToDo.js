@@ -3,10 +3,10 @@ import { FaPencilAlt } from 'react-icons/fa';
 import { Card, Modal } from 'antd';
 import ToDoUpdate from './ToDoUpdate';
 
-function ToDo({ data }) {
-  const { title, content, id } = data;
-
+function ToDo({ props }) {
+  const { title, content, id } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
+  console.log(isModalVisible);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -35,8 +35,8 @@ function ToDo({ data }) {
       }
     >
       {content}
-      <Modal title="To Do Update" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <ToDoUpdate id={id} />
+      <Modal title="To Do Update" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} keyboard="true">
+        <ToDoUpdate id={id} isModal={isModalVisible} />
       </Modal>
     </Card>
   );

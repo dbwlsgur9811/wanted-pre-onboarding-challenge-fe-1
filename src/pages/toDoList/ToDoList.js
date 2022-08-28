@@ -37,7 +37,7 @@ function ToDoList() {
             <ToDoCreate />
           </Modal>
         </section>
-        <section className="toDo">{isSuccess && data.map(props => <ToDo data={props} key={props.id} />)}</section>
+        <section className="toDo">{isSuccess && data.map(props => <ToDo props={props} key={props.id} />)}</section>
       </div>
     </div>
   );

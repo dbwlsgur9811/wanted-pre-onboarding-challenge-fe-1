@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { API } from '../config';
 import { request } from '../utils/axiosClient';
 
@@ -9,12 +9,13 @@ const createToDo = data => {
 };
 
 const updateToDo = data => {
-  console.log(data);
-  return request({ url: UPDATE_TODO, method: 'put', data });
+  const { id } = data;
+  return request({ url: `${UPDATE_TODO}/${id}`, method: 'put', data });
 };
 
 const deleteToDo = data => {
-  return request({ url: DELETE_TODO, method: 'delete', data });
+  const { id } = data;
+  return request({ url: `${DELETE_TODO}/${id}`, method: 'delete', data });
 };
 
 export const postCreateToDo = () => {
@@ -27,7 +28,6 @@ export const postCreateToDo = () => {
 };
 
 export const putUpdateToDo = id => {
-  console.log(id);
   const queryClient = useQueryClient();
   return useMutation(updateToDo, {
     onSuccess: () => {

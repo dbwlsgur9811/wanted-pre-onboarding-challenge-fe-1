@@ -5,12 +5,6 @@ import SignUpform from './pages/signUp/SignUp';
 import ToDoList from './pages/toDoList/ToDoList';
 
 function Routers() {
-  // const location = useLocation();
-
-  // useEffect(() => {
-  //   if (location.pathname !== '/list') document.body.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  // }, [location]);
-
   return (
     <Routes>
       <Route path="/todolist" element={<ToDoList />} />
